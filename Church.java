@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 public class Church
 {
-	static private String name,email,dateOfBirth,address,phoneNumber;
+	static private String name,email,dateOfBirth,address,phoneNumber,ss1,ss2;
 
 	public static void main(String[]args)
 	{
@@ -35,27 +35,31 @@ public class Church
 		            {
 		                //System.out.println(line);
 		                StringTokenizer st = new StringTokenizer(line,";");
-		           		//tkCount=st.countTokens();
+		           		tkCount=st.countTokens();
 		           		name=st.nextToken();
 		           		email=st.nextToken();
 		           		dateOfBirth=st.nextToken();
 		           		address=st.nextToken();
 		           		phoneNumber=st.nextToken();
+
+
 						linkedlist.add(new Member(name, email, dateOfBirth, address, phoneNumber));
 
-
-
-
-		              /*  for(int i=0;i<tkCount;i++)
-		                {
-							test=st.nextToken();
-							System.out.println(test);
-						}*/
+		               for(int i=0;i<((tkCount-5)/2);i++)
+		               {
+							ss1=st.nextToken();
+							ss2=st.nextToken();
+							Member.linkedlist2.add(new Attendance(ss1,ss2));
+						}
 
 		            }
 
-					String helloo=linkedlist.get(2).getName();
+					String helloo=linkedlist.get(0).getName();
 		            System.out.println(helloo);
+
+		            String helloo2=linkedlist.get(0).linkedlist2.get(0).getdate();
+		            System.out.println(helloo2);
+		          // System.out.println(ss1);
 
 
 		            // Always close files.
