@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.text.*;
 public class Church
 {
 	static private String name,email,dateOfBirth,address,phoneNumber,ss1,ss2;
@@ -10,6 +11,16 @@ public class Church
 		int tkCount; //the numbers of tokens per line
 
 		LinkedList<Member> linkedlist = new LinkedList<Member>(); //linkelist initiated
+		Scanner kb = new Scanner(System.in);
+
+
+//*-*-*-*-*--**-*-*---*-*-Date Function *-*--**-*-**-*-*-*-*-*-*--
+   	  Date dNow = new Date( );
+      SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/YYYY");
+      String hehe=ft.format(dNow);
+      System.out.println("Current Date: " + hehe);
+
+
 
 
 
@@ -73,16 +84,17 @@ public class Church
         }
         //************************** OPERATION **************************
         							/*  Menu */
+        int ans=0;
+		int listSize=linkedlist.size();
+		int listSize2=0;
 
         System.out.println("1-Show all members");
         System.out.println("2-Show all members attended at a certain date");
         System.out.println("3-Search by member name");
         System.out.println("4-Take Attendance");
 
-        int ans=2;
-		int listSize=linkedlist.size();
-		int listSize2=linkedlist.get(3).linkedlist2.size();
-		System.out.println(listSize2);
+        System.out.println("Enter a number from the menu:");
+        ans=kb.nextInt();
 
         if(ans==1)
         {
@@ -95,19 +107,16 @@ public class Church
 		if(ans==2)
 		{
 			System.out.println("Enter the Date in format dd/mm/yyyy");
-			String dateEnterd="yes";
+			String dateEnterd=kb.nextLine();
 			for(int i=0;i<listSize; i++)
 			{
-
-
+				listSize2=linkedlist.get(i).linkedlist2.size();
 				for(int g=0;g<listSize2; g++)
 				{
-					//if(linkedlist.get(i).linkedlist2.get(g).getdate()== dateEnterd || linkedlist.get(i).linkedlist2.get(g).getAttendence()== "yes")
+					if(linkedlist.get(i).linkedlist2.get(g).getdate().equals(dateEnterd) && linkedlist.get(i).linkedlist2.get(g).getAttendence().equals("yes"))
 					{
-						System.out.println(    linkedlist.get(i).linkedlist2.get(g).getdate()     );
-
+						System.out.println(    linkedlist.get(i).getName()    );
 					}
-
 				}
 			}
 		}
