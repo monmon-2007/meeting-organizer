@@ -1,11 +1,12 @@
 import java.io.*;
 import java.util.*;
 import java.text.*;
+
 public class Church
 {
 	static private String name,email,dateOfBirth,address,phoneNumber,ss1,ss2;
 
-	public static void main(String[]args)
+	public static void main(String[]args)throws IOException
 	{
 		String test;
 		int tkCount; //the numbers of tokens per line
@@ -82,6 +83,19 @@ public class Church
 		            // Or we could just do this:
 		            // ex.printStackTrace();
         }
+
+
+  File file = new File("tempp.txt");
+        // creates the file
+        file.createNewFile();
+        // creates a FileWriter Object
+        FileWriter writer = new FileWriter(file);
+        // Writes the content to the file
+        writer.write("This\n is\n an\n example\n");
+        writer.flush();
+        writer.close();
+
+
         //************************** OPERATION **************************
         							/*  Menu */
         int ans=0;
@@ -96,6 +110,10 @@ public class Church
         System.out.println("Enter a number from the menu:");
         ans=kb.nextInt();
 
+
+
+
+
         if(ans==1)
         {
 			for(int i=0;i<listSize; i++)
@@ -107,7 +125,11 @@ public class Church
 		if(ans==2)
 		{
 			System.out.println("Enter the Date in format dd/mm/yyyy");
-			String dateEnterd=kb.nextLine();
+			String dateEnterd;
+			dateEnterd=kb.nextLine();dateEnterd=kb.nextLine();
+			System.out.println(dateEnterd);
+
+
 			for(int i=0;i<listSize; i++)
 			{
 				listSize2=linkedlist.get(i).linkedlist2.size();
